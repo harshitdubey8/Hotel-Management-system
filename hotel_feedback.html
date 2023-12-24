@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Feedback</title>
+
+    <style>
+      /* Custom styles */
+      .content-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        background-image: url("5.jpg"); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        height: 90vh;
+      }
+      .img-bg {
+        color: white;
+        height: 90vh;
+        width: 98vw;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar navbar-inverse">
+      <p class="navbar-text">Hotel Management System</p>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="hotel_home.html">
+            <span class="glyphicon glyphicon-home"></span>
+            <span style="padding-left: 5px">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_book_room.html">
+            <span class="glyphicon glyphicon-bed"></span>
+            <span style="padding-left: 5px">Book a room</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="rooms.html"
+            ><span class="glyphicon glyphicon-th-large"></span>
+            <span style="padding-left: 5px">Rooms</span></a
+          >
+        </li>
+        <li>
+          <a href="hotel_contact.html">
+            <span class="glyphicon glyphicon-earphone"></span>
+            <span style="padding-left: 5px">Contact</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_source_destination.html">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <span style="padding-left: 5px">Source Destination</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="hotel_feedback.html">
+            <span class="glyphicon glyphicon-edit"></span>
+            <span style="padding-left: 5px">Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_signup.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">SignUp</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_login.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">Login</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Header ends -->
+
+    <!-- Feedback form -->
+    <div class="container content-center img-bg">
+      <div class="card" style="width: 38rem">
+        <h3>Feedback Form</h3>
+        <p>We value your feedback. Please share your thoughts with us.</p>
+        <form role="form" name="feedback">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="t1"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="t2"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea
+              class="form-control"
+              id="message"
+              placeholder="Enter your message"
+              name="t3"
+              rows="3"
+            ></textarea>
+          </div>
+          <button
+            onclick="feedbackSubmitted()"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit Feedback
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Feedback form ends -->
+  </body>
+
+  <script>
+    function isFormValid() {
+      var name = feedback.t1.value;
+      var email = feedback.t2.value;
+      var message = feedback.t3.value;
+      var isFormValid = true;
+
+      if (name == "") {
+        alert("name can't be empty");
+        isFormValid = false;
+        feedback.t1.focus();
+        return;
+      } else if (email == "" || email.indexOf("@") === -1) {
+        alert("email can't be empty and must contain @");
+        isFormValid = false;
+        feedback.t2.focus();
+        return;
+      }
+      if (message == "") {
+        alert("message can't be empty");
+        isFormValid = false;
+        feedback.t3.focus();
+        return;
+      }
+
+      return isFormValid;
+    }
+
+    function feedbackSubmitted() {
+      if (isFormValid()) {
+        alert("Form Submitted Successfully");
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Book a Room</title>
+
+    <style>
+      /* Custom styles */
+      .content-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        background-image: url("5.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 20px;
+        height: 90vh;
+      }
+      .img-bg {
+        color: white;
+        height: 90vh;
+        width: 98vw;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .custom-select.text-dark option {
+        color: black;
+      }
+      .custom-select.text-dark {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar navbar-inverse">
+      <p class="navbar-text">Hotel Management System</p>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="hotel_home.html">
+            <span class="glyphicon glyphicon-home"></span>
+            <span style="padding-left: 5px">Home</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="hotel_book_room.html">
+            <span class="glyphicon glyphicon-bed"></span>
+            <span style="padding-left: 5px">Book a room</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="rooms.html"
+            ><span class="glyphicon glyphicon-th-large"></span>
+            <span style="padding-left: 5px">Rooms</span></a
+          >
+        </li>
+        <li>
+          <a href="hotel_contact.html">
+            <span class="glyphicon glyphicon-earphone"></span>
+            <span style="padding-left: 5px">Contact</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_source_destination.html">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <span style="padding-left: 5px">Source Destination</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_feedback.html">
+            <span class="glyphicon glyphicon-edit"></span>
+            <span style="padding-left: 5px">Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_signup.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">SignUp</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_login.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">Login</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Header ends -->
+
+    <!-- Book a Room form -->
+    <div class="container content-center img-bg">
+      <div class="card" style="width: 38rem">
+        <h3>Book a Room</h3>
+        <p>Select a room and view details</p>
+        <form role="form">
+          <div class="form-group">
+            <label for="roomType">Select Room:</label>
+            <select class="form-control" id="roomType">
+              <option value="deluxe">Deluxe Room</option>
+              <option value="premium">Premium Room</option>
+              <option value="double">Double Room</option>
+              <!-- Add more room options if needed --></select
+            ><br />
+            <a href="rooms.html" class="btn btn-primary">View Room Details</a>
+          </div>
+          <p>Check-in Timing 11:00 am</p>
+          <p>Check-out Timing 10:00 am</p>
+          <div class="form-group">
+            <label for="checkinDate">Check-in Date:</label>
+            <input type="date" class="form-control" id="checkinDate" required />
+          </div>
+          <div class="form-group">
+            <label for="checkoutDate">Check-out Date:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="checkoutDate"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label
+                  class="input-group-text text-dark"
+                  for="inputGroupSelect01"
+                  >Select Number Of Guests</label
+                >
+              </div>
+              <select class="custom-select text-dark" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" onclick="onBookTap()">
+            Book
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Book a Room form ends -->
+  </body>
+
+  <script>
+    function validateForm() {
+      let inputs = document.forms[0].getElementsByTagName("input");
+      let selects = document.getElementsByTagName("select");
+      let isValid = true;
+
+      for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.trim() === "") {
+          isValid = false;
+          alert("Please fill in all fields");
+          break;
+        }
+      }
+
+      for (let i = 0; i < selects.length; i++) {
+        if (selects[i].value.trim() === "Choose...") {
+          isValid = false;
+          alert("Please select a value for guests");
+          break;
+        }
+      }
+
+      return isValid;
+    }
+
+    function onBookTap() {
+      if (validateForm()) {
+        alert("Form submitted successfully!");
+        // You can add further processing or form submission logic here
+      }
+    }
+  </script>
+</html>

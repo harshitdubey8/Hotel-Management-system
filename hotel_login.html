@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Login</title>
+
+    <style></style>
+  </head>
+
+  <style>
+    .content-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    body {
+      background-image: url("5.jpg"); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+      height: 90vh;
+    }
+    .img-bg {
+      color: white;
+      /* text-align: center; */
+      height: 90vh;
+      width: 98vw;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  <body>
+    <!-- -- header  begins--  -->
+
+    <nav class="navbar navbar-inverse">
+      <p class="navbar-text">Hotel Management System</p>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="hotel_home.html">
+            <span class="glyphicon glyphicon-home"></span>
+            <span style="padding-left: 5px">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_book_room.html">
+            <span class="glyphicon glyphicon-bed"></span>
+            <span style="padding-left: 5px">Book a room</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="rooms.html"
+            ><span class="glyphicon glyphicon-th-large"></span>
+            <span style="padding-left: 5px">Rooms</span></a
+          >
+        </li>
+        <li>
+          <a href="hotel_contact.html">
+            <span class="glyphicon glyphicon-earphone"></span>
+            <span style="padding-left: 5px">Contact</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_source_destination.html">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <span style="padding-left: 5px">Source Destination</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_feedback.html">
+            <span class="glyphicon glyphicon-edit"></span>
+            <span style="padding-left: 5px">Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="hotel_signup.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">SignUp</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="hotel_login.html">
+            <span class="glyphicon glyphicon-user"></span>
+            <span style="padding-left: 5px">Login</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- -- header ends --  -->
+    <div class="container content-center img-bg">
+      <div class="card" style="width: 38rem">
+        <h3>Login Up</h3>
+        <p>login and Continue your Journey</p>
+        <form role="form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="pwd"> Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="pwd"
+              placeholder="Enter password"
+            />
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" /> Remember me</label>
+          </div>
+          <button
+            onclick="loginValidation()"
+            type="submit"
+            class="btn btn-success"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const loginValidation = () => {
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("pwd").value;
+
+      if (email === "" || email.indexOf("@") === -1) {
+        alert("Please enter a valid email address");
+        return false;
+      } else if (password.length < 8) {
+        alert("Password must be at least 8 characters long");
+        return false;
+      }
+
+      localStorage.setItem("email", document.getElementById("email").value);
+      localStorage.setItem("password", document.getElementById("pwd").value);
+
+      alert("Validation successful!");
+      return true;
+    };
+  </script>
+</html>
